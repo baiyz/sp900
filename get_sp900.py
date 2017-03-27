@@ -1,9 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 import os
 import sh
 import sys
 import time
 import json
+
 sys.path.insert(0, os.path.join(os.getcwd(), 'lib'))
 try:
     from finsymbols import symbols
@@ -23,20 +24,20 @@ google_bad_list = ['APH', 'LMT']
 sp900_all = {}
 sp900_chg = {}
 for stock in sp900:
-    print stock['symbol']
+    sys.stdout.write(stock['symbol'])
     try:
         if stock['symbol'] not in google_bad_list and '.' in stock['symbol']:
             equity_parsed = getQuotes(stock['symbol'])[0]
             sp900_all[stock['symbol']] = float(equity_parsed['ChangePercent'])
-            print float(equity_parsed['ChangePercent'])
+            sys.stdout.write(" {}\n".format(float(equity_parsed['ChangePercent'])))
             if DEBUG:
-                print "{}\t{}\t{}\t{}%".format(stock['symbol'], stock['company'], equity_parsed['LastTradePrice'], equity_parsed['ChangePercent'])
+                sys.stdout.write("{}\t{}\t{}\t{}%".format(stock['symbol'], stock['company'], equity_parsed['LastTradePrice'], equity_parsed['ChangePercent']))
         else:
             equity = Share(stock['symbol'])
             sp900_all[stock['symbol']] = float(equity.get_percent_change().strip('%'))/100
-            print float(equity.get_percent_change().strip('%'))/100
+            sys.stdout.write(" {}\n".format(float(equity.get_percent_change().strip('%'))/100))
             if DEBUG:
-                print "{}\t{}\t{}\t{}".format(stock['symbol'], equity.get_name(), equity.get_price(), equity.get_percent_change())
+                sys.stdout.write("{}\t{}\t{}\t{}".format(stock['symbol'], equity.get_name(), equity.get_price(), equity.get_percent_change()))
     except:
         pass
 
