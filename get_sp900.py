@@ -1,10 +1,16 @@
 #!/usr/bin/env python
-
+import os
+import sh
+import sys
 import time
 import json
-from finsymbols import symbols
-from googlefinance import getQuotes
-from yahoo_finance import Share
+sys.path.insert(0, os.path.join(os.getcwd(), 'lib'))
+try:
+    from finsymbols import symbols
+    from googlefinance import getQuotes
+    from yahoo_finance import Share
+except ImportError:
+    sh.pip(['install', 'bs4', 'simplejson'])
 
 DEBUG = False
 
