@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 import os
 import sh
 import sys
@@ -11,7 +11,9 @@ try:
     from googlefinance import getQuotes
     from yahoo_finance import Share
 except ImportError:
+    print "pip bs4 and simplejson are needed"
     sh.pip(['install', 'bs4', 'simplejson'])
+    sys.exit(2)
 
 DEBUG = False
 
