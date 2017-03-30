@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/yanbai01/Development/sp900/get_sp900.py", line 20, in <module>
+    sp500 = symbols.get_sp500_symbols()
+  File "/Users/yanbai01/Development/sp900/lib/finsymbols/symbols.py", line 8, in get_sp500_symbols
+    page_html = wiki_html('List_of_S%26P_500_companies', 'SP500.html')
+  File "/Users/yanbai01/Development/sp900/lib/finsymbols/symbol_helper.py", line 95, in wiki_html
+    wiki_html = fetch_file('http://en.wikipedia.org/wiki/' + str(url))
+  File "/Users/yanbai01/Development/sp900/lib/finsymbols/symbol_helper.py", line 75, in fetch_file
+    file_data = file_fetcher.open(url).read()
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 429, in open
+    response = self._open(req, data)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 447, in _open
+    '_open', req)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 407, in _call_chain
+    result = func(*args)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 1228, in http_open
+    return self.do_open(httplib.HTTPConnection, req)
+  File "/usr/local/Cellar/python/2.7.13/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib2.py", line 1198, in do_open
+    raise URLError(err)
+urllib2.URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>
